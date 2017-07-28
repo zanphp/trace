@@ -1,0 +1,25 @@
+{
+  "name": "zanphp/trace",
+  "require": {
+    "php": ">=5.6",
+    "zanphp/contracts": "dev-master",
+    "zanphp/exception": "dev-master",
+    "zanphp/connection-pool": "dev-master",
+    "zanphp/support": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "ZanPHP\\Trace\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "secure-http": false
+  },
+  "minimum-stability": "dev"
+}
