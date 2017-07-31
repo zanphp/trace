@@ -5,6 +5,7 @@ namespace ZanPHP\Trace;
 use ZanPHP\ConnectionPool\ConnectionEx;
 use ZanPHP\ConnectionPool\TCP\TcpClient;
 use ZanPHP\ConnectionPool\TCP\TcpClientEx;
+use ZanPHP\Contracts\ConnectionPool\ConnectionManager;
 use ZanPHP\Contracts\Foundation\Application;
 use ZanPHP\Contracts\Trace\Tracer;
 
@@ -169,7 +170,8 @@ class ZanTracer extends Tracer
     public function uploadTraceData()
     {
         try {
-            $connectionManager = make("connectionManager");
+            /** @var ConnectionManager $connectionManager */
+            $connectionManager = make(ConnectionManager::class);
             $connection = (yield $connectionManager->get("tcp.trace"));
             if ($connection instanceof ConnectionEx) {
                 $tcpClient = new TcpClientEx($connection);
