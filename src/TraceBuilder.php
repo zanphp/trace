@@ -2,6 +2,8 @@
 
 namespace ZanPHP\Trace;
 
+use ZanPHP\Contracts\Foundation\Application;
+
 class TraceBuilder
 {
     private $data = "";
@@ -60,7 +62,8 @@ class TraceBuilder
 
         $microtime = str_replace('.', '', microtime(true));
 
-        $application = make("app");
+        /** @var Application $application */
+        $application = make(Application::class);
         $data = [
             $application->getName(),
             self::$hexIp,

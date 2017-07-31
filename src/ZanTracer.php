@@ -5,6 +5,7 @@ namespace ZanPHP\Trace;
 use ZanPHP\ConnectionPool\ConnectionEx;
 use ZanPHP\ConnectionPool\TCP\TcpClient;
 use ZanPHP\ConnectionPool\TCP\TcpClientEx;
+use ZanPHP\Contracts\Foundation\Application;
 use ZanPHP\Contracts\Trace\Tracer;
 
 class ZanTracer extends Tracer
@@ -24,7 +25,8 @@ class ZanTracer extends Tracer
     public function __construct($rootId = null, $parentId = null)
     {
         $this->builder = new TraceBuilder();
-        $application = make("app");
+        /** @var Application $application */
+        $application = make(Application::class);
         $this->appName = $application->getName();
         $this->hostName = getenv('hostname');
         $this->ip = getenv('ip');
