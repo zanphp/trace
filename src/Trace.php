@@ -10,15 +10,6 @@ use ZanPHP\Support\Arr;
 
 class Trace implements TraceContract
 {
-    const GROUP_NAME = "zan_group";
-    const NAME = "zan";
-    const PROTOCOL = "PT1";
-
-    const TRACE_KEY = "CAT_TRACE";
-    const ROOT_ID_KEY = '_catRootMessageId';
-    const PARENT_ID_KEY = '_catParentMessageId';
-    const CHILD_ID_KEY = '_catChildMessageId';
-
     private $run;
 
     /**
@@ -132,5 +123,10 @@ class Trace implements TraceContract
         }
 
         yield $this->traceImp->uploadTraceData();
+    }
+
+    public static function generateId()
+    {
+        return TraceBuilder::generateId();
     }
 }
