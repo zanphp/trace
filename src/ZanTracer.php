@@ -172,7 +172,7 @@ class ZanTracer extends Tracer
         try {
             /** @var ConnectionManager $connectionManager */
             $connectionManager = make(ConnectionManager::class);
-            $connection = (yield $connectionManager->get("tcp.trace"));
+            $connection = (yield $connectionManager->get("tcp.trace", false));
             if ($connection instanceof ConnectionEx) {
                 $tcpClient = new TcpClientEx($connection);
                 yield $tcpClient->send($this->builder->getData());
