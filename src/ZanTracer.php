@@ -84,10 +84,17 @@ class ZanTracer extends Tracer
         list($usec, $sec) = explode(' ', microtime());
         $time = date("Y-m-d H:i:s", $sec) . substr($usec, 1, 4);
 
+        if (isset($this->data[0])) {
+            $elapsed = round(($sec + $usec - $this->data[0][0]) * 1000, 3);
+            $elapsed = "--elapsed:{$elapsed}ms";
+        } else {
+            $elapsed = "";
+        }
+
         $trace = [
             "t$time",
             $type,
-            $name,
+            $name.$elapsed,
         ];
         $this->builder->buildTransaction($trace);
 
