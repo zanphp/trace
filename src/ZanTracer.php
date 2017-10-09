@@ -86,7 +86,7 @@ class ZanTracer extends Tracer
 
         if (isset($this->data[0])) {
             $elapsed = round(($sec + $usec - $this->data[0][0]) * 1000, 3);
-            $elapsed = "--elapsed:{$elapsed}ms";
+            $elapsed = "?elapsed:{$elapsed}ms";
         } else {
             $elapsed = "";
         }
