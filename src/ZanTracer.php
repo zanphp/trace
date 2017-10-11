@@ -94,7 +94,8 @@ class ZanTracer extends Tracer
         $trace = [
             "t$time",
             $type,
-            $name.$elapsed,
+//            $name.$elapsed,
+            $name
         ];
         $this->builder->buildTransaction($trace);
 
